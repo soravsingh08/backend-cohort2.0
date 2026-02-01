@@ -8,3 +8,4 @@ app.get("/about", (req,res)=>{
     res.send("this is about page")
 })
 app.listen(3000)
+
