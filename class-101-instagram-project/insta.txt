@@ -23,3 +23,16 @@
     followers:Array,
     profile_img:String,
   }
+
+  -------
+102 Video
+=>pehle post.model.js banana hai 
+isme ek nayi chiz ki user ki id ka refrence taaki connected rhe sab
+  post{
+    caption: String,
+    user :
+    createdAt
+  }
+
+=> Ab api banani hai - post.routes.js
+- saare logics hamesha controllers mainjayenge
