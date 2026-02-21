@@ -1,0 +1,1 @@
+Yaad rakhna sabki alag alag routes banenge ye jo auth hai sirf authentication k lie haiaaise hi post ki banegi and baaki bhi saari 

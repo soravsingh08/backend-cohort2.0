@@ -6,7 +6,8 @@
     .then(()=>{
         console.log("Connected to DB")
     })
-    console.log("connected to database")
+
+    
  }
 
  module.exports = connectToDb
