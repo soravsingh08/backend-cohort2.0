@@ -3,6 +3,7 @@ const postRouter =express.Router()
 const postController = require("../controllers/post.controller")
 const multer =  require("multer")
 const upload = multer({storage:multer.memoryStorage()})
+const identifyUser = require("../middlewares/auth.middleware")
 
 
 /**
@@ -10,12 +11,12 @@ const upload = multer({storage:multer.memoryStorage()})
  * - req.body ={caption,image-file}
  */
 
-postRouter.post("/",upload.single("image"), postController.createPostController)
+postRouter.post("/",upload.single("image"), identifyUser, postController.createPostController)
 
 /**
  * GET /api/posts/ [protected]
  */
-postRouter.get("/",postController.getPostController)
+postRouter.get("/", identifyUser, postController.getPostController)
 
 /**
  * GET /api/posts/details/:postid
@@ -23,6 +24,6 @@ postRouter.get("/",postController.getPostController)
  * also check weather the post belong to the user that the request come from
  */
 
-postRouter.get("/details/:postId",postController.getPostDetailsController)
+postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsController)
 
 module.exports = postRouter
