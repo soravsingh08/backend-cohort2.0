@@ -1,21 +1,28 @@
-.button {
-    border: none;
-    outline: none;
-    padding-inline: 1rem;
-    padding-block: 0.7rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-
-
-&.primary-button{
-    background-color: #d20c3d;
-    color: #fff;
-
-
+.button{
+  padding:10px;
+  border-radius:6px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
 }
- &:active{
-    transform: scale(0.95);
- }
 
+.primary-button{
+  background:#0095f6;
+  color:#fff;
+}
+
+.primary-button:hover{
+  background:#1877f2;
+}
+
+p{
+  text-align:center;
+  font-size:14px;
+  color:#737373;
+}
+
+a{
+  text-decoration:none;
+  font-weight:600;
+  color:#0095f6;
 }

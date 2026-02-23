@@ -1,28 +1,51 @@
-@mixin flex-column($gap: 0rem) {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+body{
+  margin:0;
+  background:#fafafa;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#262626;
 }
 
-main {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .form-container {
-        @include flex-column(1rem);
-        min-width: 350px;
-    }
-
-    form {
-        @include flex-column(1rem);
-        input{
-            padding: 0.7rem;
-            border-radius: 1rem;
-            border: none;
-            outline: none;
-        }
-    }
+main{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
+
+.form-container{
+  width:360px;
+  padding:2.2rem 2rem;
+  background:#fff;
+  border:1px solid #dbdbdb;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.form-container h1{
+  text-align:center;
+  font-size:22px;
+  margin:0;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+input{
+  padding:11px;
+  border:1px solid #dbdbdb;
+  border-radius:6px;
+  background:#fafafa;
+  outline:none;
+  font-size:14px;
+}
+
+input:focus{
+  background:#fff;
+  border-color:#a8a8a8;
+}
+

@@ -6,7 +6,7 @@ const api = axios.create({
     withCredentials:true,
 })
 
-export async function login(username,password){
+export async function login(username,password){ //jab bhi koi handleLogin ko call karega, usko 2 values deni hongi:
     const response = await api.post("./login",{
         username,
         password
