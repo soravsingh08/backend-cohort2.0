@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "./auth.context";
 import { login, register, getMe } from "./services/auth.api";
 
-export const useAuth =()=>{ //custom react hook 
+export const useAuth =()=>{
     const context = useContext(AuthContext)
     const {user,setUser,loading,setLoading}= context
   

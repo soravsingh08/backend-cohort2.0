@@ -10,7 +10,7 @@ const Register = () => {
   return (
      <main>
         <div className="form-container">
-            <h1>Register</h1>
+            <h1 className='instagram-text'>Instagram</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" name='username' id='username' placeholder=' Enter Username' />
                 <input type="email" name='email' id='email' placeholder=' Enter Email' />
