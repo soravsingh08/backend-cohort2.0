@@ -1,12 +1,12 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const blacklistModel = require("../models/blacklist.model");
 
 // --- REGISTER USER ---
 async function registerUser(req, res) {
     try {
-        const { username, email, password } = req.body; // 'passworf' typo fixed
-
+        const { username, email, password } = req.body;
         const isAlreadyRegistered = await userModel.findOne({
             $or: [{ email }, { username }]
         });
@@ -31,7 +31,6 @@ async function registerUser(req, res) {
             { expiresIn: "3d" }
         );
 
-        // Cookie aur Response function ke ANDAR hona chahiye
         res.cookie("token", token);
         return res.status(201).json({
             message: "User registered successfully",
@@ -53,8 +52,9 @@ async function loginUser(req, res) {
             $or: [
                 { username: username || "" }, // Agar username nahi hai toh empty string
                 { email: email || "" }
+                
             ]
-        });
+        }).select("+password");
 
         // "Invalid Credentials" message (Generic for security)
         if (!user) {
@@ -85,4 +85,30 @@ async function loginUser(req, res) {
     }
 }
 
-module.exports = { registerUser, loginUser }; // Dono export karein
+// --- Get-Me
+async function getMe(req,res){
+    const user = await userModel.findById(req.user.id);
+    return res.status(200).json({
+        message: "User fetched successfully",
+        user
+    })
+}
+
+
+// --- Logout User ---
+async function logoutUser(req,res){
+    const token = req.cookies.token;
+
+    res.clearCookie("token")
+
+    await blacklistModel.create({
+        token
+    })
+
+    res.status(200).json({
+        message: "Logout Successfully"
+    })
+}
+  
+
+module.exports = { registerUser, loginUser, getMe, logoutUser }; // Dono export karein
