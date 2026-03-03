@@ -53,7 +53,7 @@ async function loginUser(req, res) {
             $or: [
                 { username: username || "" }, // Agar username nahi hai toh empty string
                 { email: email || "" }
-                
+
             ]
         }).select("+password");
 
@@ -87,7 +87,7 @@ async function loginUser(req, res) {
 }
 
 // --- Get-Me
-async function getMe(req,res){
+async function getMe(req, res) {
     const user = await userModel.findById(req.user.id);
     return res.status(200).json({
         message: "User fetched successfully",
@@ -97,7 +97,7 @@ async function getMe(req,res){
 
 
 // --- Logout User ---
-async function logoutUser(req,res){
+async function logoutUser(req, res) {
     const token = req.cookies.token;
 
     res.clearCookie("token")
@@ -106,12 +106,12 @@ async function logoutUser(req,res){
     //     token
     // })
 
-    redis.set(token, Date.now().toString()) 
+    redis.set(token, Date.now().toString())
 
     res.status(200).json({
         message: "Logout Successfully"
     })
 }
-  
+
 
 module.exports = { registerUser, loginUser, getMe, logoutUser }; // Dono export karein
