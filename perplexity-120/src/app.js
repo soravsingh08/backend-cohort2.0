@@ -14,7 +14,7 @@ app.use(cookieParser());
 // ─── Routes ──────────────────────────────────────────────────────────────────
 // TODO: import and mount your route files here
 // import userRouter from "./routes/user.routes.js";
-// app.use("/api/v1/users", userRouter);
+// app.use("/api/users", userRouter);
 
 // ─── Health Check ─────────────────────────────────────────────────────────────
 app.get("/", (req, res) => {
@@ -22,5 +22,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+
 
 export { app };
